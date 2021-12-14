@@ -43,7 +43,8 @@ join Product as pr on orDe.pID=pr.pID;
 
 select cus.cName
 from Customer as cus
-left join `Order`on cus.cID=`Order`.cID;
+left join `Order`on cus.cID=`Order`.cID
+where `Order`.cID is null;
 
 
 select `Order`.oID, `Order`.oDate, sum(orDe.odQTY*pr.pPrice) oTotalPrice
