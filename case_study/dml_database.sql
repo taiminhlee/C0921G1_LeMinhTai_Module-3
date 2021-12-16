@@ -196,6 +196,11 @@ union
 select  ho_ten
 from khach_hang;
 
+-- cách3
+select ho_ten
+from khach_hang
+group by ho_ten;
+
 -- task9 Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi tháng trong năm 2021 
 -- thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng.
 
@@ -246,6 +251,13 @@ from khach_hang as kh
 join hop_dong as hd on kh.ma_khach_hang=hd.ma_khach_hang
  where (year(hd.ngay_lam_hop_dong) = 2020) and month(hd.ngay_lam_hop_dong) in (10,11,12)
 or (year(hd.ngay_lam_hop_dong) = 2021 and quarter(hd.ngay_lam_hop_dong) in (3,4))
+and kh.ma_khach_hang not in (
+select kh.ma_khach_hang
+from khach_hang as kh
+join hop_dong as hd on kh.ma_khach_hang=hd.ma_khach_hang
+ where (year(hd.ngay_lam_hop_dong) = 2020) and quarter(hd.ngay_lam_hop_dong) in (1,2,3)
+or (year(hd.ngay_lam_hop_dong) = 2021 and quarter(hd.ngay_lam_hop_dong) in (1,2))
+)
 )
 group by hd.ma_hop_dong;
  
@@ -300,9 +312,20 @@ where (year(hd.ngay_lam_hop_dong) in (2019,2021))
 -- task17 Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond, chỉ cập nhật những khách hàng đã từng đặt
 --  phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ.
 
-update loai_khach 
-set ten_loai_khach = 'Diamond'
-where ten_loai_khach ='Platinum' and ma_loai_khach in (
+
+update khach_hang
+set ten_loai_khach = 'Diamond' and ma_loai_khach=1
+where ma_loai_khach =2 and ma_loai_khach in (
+select tabl.col from(
+select lk.ma_loai_khach as col
+from loai_khach as lk
+join khach_hang as kh on lk.ma_loai_khach=kh.ma_loai_khach
+join hop_dong as hd on hd.ma_khach_hang=kh.ma_khach_hang
+join dich_vu as dv on hd.ma_dich_vu=dv.ma_dich_vu
+join hop_dong_chi_tiet as hdct on hd.ma_hop_dong=hdct.ma_hop_dong
+join dich_vu_di_kem as dvdk on hdct.ma_dich_vu_di_kem=dvdk.ma_dich_vu_di_kem
+having sum(dv.chi_phi_thue+ hdct.so_luong*dvdk.gia) >10000000
+)as tabl
 );
 
 -- task18 Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
@@ -313,9 +336,21 @@ select tabl.col from(
 select kh.ma_khach_hang as col
 from khach_hang as kh
 left join hop_dong hd on kh.ma_khach_hang=hd.ma_nhan_vien
-where (year(hd.ngay_lam_hop_dong) =2021)
+where (year(hd.ngay_lam_hop_dong) between 2019 and 2021)
 ) as tabl
 );
+
+-- insert into  khach_hang
+-- value
+-- (1,'Nguyễn Thị Hào','1970-11-07',b'0','643431213','0945423362','thihao07@gmail.com','23 Nguyễn Hoàng, Đà Nẵng',5),
+-- (4,'Dương Văn Quan','1981-07-08',b'1','543432111','0490039241','duongquan@gmail.com','K453/12 Lê Lợi, Đà Nẵng',1),
+-- (5,'Hoàng Trần Nhi Nhi','1995-12-09',b'0','795453345','0312345678','nhinhi123@gmail.com','224 Lý Thái Tổ, Gia Lai',4),
+-- (6,'Tôn Nữ Mộc Châu','2005-12-06',b'0','732434215','0988888844','tonnuchau@gmail.com','37 Yên Thế, Đà Nẵng',4),
+-- (8,'Nguyễn Thị Hào','1999-04-08',b'0','965656433','0763212345','haohao99@gmail.com','55 Nguyễn Văn Linh, Kon Tum',3),
+-- (9,'Trần Đại Danh','1994-07-01',b'1','432341235','0643343433','danhhai99@gmail.com','24 Lý Thường Kiệt, Quảng Ngãi',1);	
+
+	
+
 
 
 -- task19 Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
