@@ -145,8 +145,7 @@ left join hop_dong as hd on kh.ma_khach_hang=hd.ma_khach_hang
 left join dich_vu as dv on hd.ma_dich_vu=dv.ma_dich_vu
 left join hop_dong_chi_tiet as hdct on hd.ma_hop_dong=hdct.ma_hop_dong
 left join dich_vu_di_kem as dvdk on hdct.ma_dich_vu_di_kem=dvdk.ma_dich_vu_di_kem
-group by hd.ma_hop_dong
-order by kh.ma_khach_hang asc, hd.ma_hop_dong desc;
+group by hd.ma_hop_dong;
 
 /*task6 Hiển thị ma_dich_vu, ten_dich_vu, dien_tich, chi_phi_thue, ten_loai_dich_vu của tất cả các loại
  dịch vụ chưa từng được khách hàng thực hiện đặt trong quý 1 của năm 2021 (Quý 1 là tháng 1, 2, 3).*/
@@ -231,7 +230,7 @@ join hop_dong_chi_tiet as hdct on dvdk.ma_dich_vu_di_kem=hdct.ma_dich_vu_di_kem
 join hop_dong as hd on hdct.ma_hop_dong=hd.ma_hop_dong
 join khach_hang as kh on hd.ma_khach_hang=kh.ma_khach_hang
 join loai_khach as lk on kh.ma_loai_khach=lk.ma_loai_khach
-where lk.ten_loai_khach like "Diamond" and kh.dia_chi like "%Vinh%" or kh.dia_chi like "%Quảng Ngãi%";
+where lk.ten_loai_khach like "Diamond" and (kh.dia_chi like "%Vinh%" or kh.dia_chi like "%Quảng Ngãi%");
 
 -- task12 Hiển thị thông tin ma_hop_dong, ho_ten (nhân viên), ho_ten (khách hàng), so_dien_thoai (khách hàng), ten_dich_vu, so_luong_dich_vu_di_kem (được tính dựa trên việc sum so_luong ở dich_vu_di_kem),
 --  tien_dat_coc của tất cả các dịch vụ đã từng được khách hàng đặt vào 3 tháng cuối năm 2020 nhưng
