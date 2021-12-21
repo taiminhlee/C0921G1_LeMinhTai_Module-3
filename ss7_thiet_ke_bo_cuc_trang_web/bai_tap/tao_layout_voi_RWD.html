@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .col-1 {
+            width: 8.33%;
+        }
+
+        .col-2 {
+            width: 16.66%;
+        }
+
+        .col-3 {
+            width: 25%;
+        }
+
+        .col-4 {
+            width: 33.33%;
+        }
+
+        .col-5 {
+            width: 41.66%;
+        }
+
+        .col-6 {
+            width: 50%;
+        }
+
+        .col-7 {
+            width: 58.33%;
+        }
+
+        .col-8 {
+            width: 66.66%;
+        }
+
+        .col-9 {
+            width: 75%;
+        }
+
+        .col-10 {
+            width: 83.33%;
+        }
+
+        .col-11 {
+            width: 91.66%;
+        }
+
+        .col-12 {
+            width: 100%;
+        }
+
+        [class*="col-"] {
+            float: left;
+            padding: 5px;
+        }
+
+        .row::after {
+            clear: both;
+            display: block;
+            content: "";
+        }
+
+        .menu {
+            background: #1d1c1c;
+        }
+
+        .menu li {
+            float: left;
+            position: relative;
+            width: 100px;
+            height: 38px;
+            list-style: none;
+            background: #1d1c1c;
+            color: #CDCDCD;
+            cursor: pointer;
+            line-height: 38px;
+            text-align: center;
+        }
+
+        .menu ul ul {
+            position: absolute;
+            padding: 0;
+            visibility: hidden;
+        }
+
+        .menu ul li:hover ul {
+            visibility: visible;
+        }
+
+        .menu li:hover {
+            background: black;
+        }
+
+        .body_left, .body_right {
+            background: orange;
+
+        }
+        .body_left{
+            padding-bottom: 320px;
+        }
+        .body_right{
+            padding-bottom: 150px;
+        }
+
+        @media only screen and (max-width: 768px) {
+            [class*="col-"] {
+                width: 100%;
+            }
+        }
+
+        .ads {
+            background: deeppink;
+            margin: 10px;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="row ">
+    <div class="col-12 menu">
+        <ul>
+
+            <li>Logo</li>
+            <li>Home
+                <ul>
+                    <li><a>Link</a></li>
+                    <li><a>Link</a></li>
+                    <li><a>Link</a></li>
+                </ul>
+            </li>
+            <li>About</li>
+            <li>Projects</li>
+            <li>Contact</li>
+            <li style="float: right">Login</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3 body_left">
+    </div>
+    <div class="col-6 body">
+        <h3>Welcome</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna.
+            Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula,
+            risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent
+            scelerisque tortor sed accumsan convallis.</p>
+    </div>
+    <div class="col-3 body_right" style="float: right">
+        <div class="ads">
+            <p style="text-align: center">ADS</p>
+        </div>
+        <div class="ads">
+            <p style="text-align: center">ADS</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 footer" style="background: gray">
+        <p style="text-align: center">Footer test</p>
+    </div>
+</div>
+
+</body>
+</html>
