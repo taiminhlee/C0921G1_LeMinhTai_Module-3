@@ -1,51 +1,154 @@
 <%--
   Created by IntelliJ IDEA.
   User: Admin
-  Date: 27/12/2021
-  Time: 1:54 PM
+  Date: 28/12/2021
+  Time: 4:18 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="en">
 <head>
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bootstrap Delete Confirmation Modal</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Varela Round', sans-serif;
+            background: #666666;
+        }
+        .modal-confirm {
+            color: #636363;
+            width: 400px;
+        }
+        .modal-confirm .modal-content {
+            padding: 20px;
+            border-radius: 5px;
+            border: none;
+            text-align: center;
+            font-size: 14px;
+        }
+        .modal-confirm .modal-header {
+            border-bottom: none;
+            position: relative;
+        }
+        .modal-confirm h4 {
+            text-align: center;
+            font-size: 26px;
+            margin: 30px 0 -10px;
+        }
+        .modal-confirm .close {
+            position: absolute;
+            top: -5px;
+            right: -2px;
+        }
+        .modal-confirm .modal-body {
+            color: #999;
+        }
+        .modal-confirm .modal-footer {
+            border: none;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 13px;
+            padding: 10px 15px 25px;
+        }
+        .modal-confirm .modal-footer a {
+            color: #999;
+        }
+        .modal-confirm .icon-box {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            border-radius: 50%;
+            z-index: 9;
+            text-align: center;
+            border: 3px solid #f15e5e;
+        }
+        .modal-confirm .icon-box i {
+            color: #f15e5e;
+            font-size: 46px;
+            display: inline-block;
+            margin-top: 13px;
+        }
+        .modal-confirm .btn, .modal-confirm .btn:active {
+            color: #fff;
+            border-radius: 4px;
+            background: #60c7c1;
+            text-decoration: none;
+            transition: all 0.4s;
+            line-height: normal;
+            min-width: 120px;
+            border: none;
+            min-height: 40px;
+            border-radius: 3px;
+            margin: 0 5px;
+        }
+        .modal-confirm .btn-secondary {
+            background: #c1c1c1;
+        }
+        .modal-confirm .btn-secondary:hover, .modal-confirm .btn-secondary:focus {
+            background: #a8a8a8;
+        }
+        .modal-confirm .btn-danger {
+            background: #f15e5e;
+        }
+        .modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
+            background: #ee3535;
+        }
+    </style>
 </head>
 <body>
-<h1>Delete customer</h1>
-<p>
-    <a href="${pageContext.request.contextPath}/products">Back to customer list</a>
-</p>
-<form method="post">
-    <h3>Are you sure?</h3>
-    <fieldset>
-        <legend>Product information</legend>
-        <table>
-            <tr>
-                <td>Id:</td>
-                <td>${requestScope["product"].getId()}</td>
-            </tr>
-            <tr>
-                <td>Name:</td>
-                <td>${requestScope["product"].getName()}</td>
-            </tr>
-            <tr>
-                <td>Price:</td>
-                <td>${requestScope["product"].getPrice()}</td>
-            </tr>
-            <tr>
-                <td>Description:</td>
-                <td>${requestScope["product"].getDescription()}</td>
-            </tr>
-            <tr>
-                <td>Brand:</td>
-                <td>${requestScope["product"].getBrand()}</td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Delete customer"></td>
-                <td><a href="/products">Back to customer list</a></td>
-            </tr>
-        </table>
-    </fieldset>
-</form>
+<div class="text-center">
+    <form method="post">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box">
+                        <i class="material-icons">&#xE5CD;</i>
+                    </div>
+                    <h4 class="modal-title w-100">Are you sure?</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete this product? This process cannot be undone.</p>
+                    <table>
+                        <tr>
+                            <td>Id:</td>
+                            <td>${requestScope["product"].getId()}</td>
+                        </tr>
+                        <tr>
+                            <td>Name:</td>
+                            <td>${requestScope["product"].getName()}</td>
+                        </tr>
+                        <tr>
+                            <td>Price:</td>
+                            <td>${requestScope["product"].getPrice()}</td>
+                        </tr>
+                        <tr>
+                            <td>Description:</td>
+                            <td>${requestScope["product"].getDescription()}</td>
+                        </tr>
+                        <tr>
+                            <td>Brand:</td>
+                            <td>${requestScope["product"].getBrand()}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel></button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Modal HTML -->
+
 </body>
 </html>

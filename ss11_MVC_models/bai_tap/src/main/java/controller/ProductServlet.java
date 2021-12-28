@@ -53,6 +53,7 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
+
     private void update(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
