@@ -140,15 +140,13 @@
                     </table>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel></button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><a href="/products">Cancel</a></button>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </div>
             </div>
         </div>
     </form>
 </div>
-
-<!-- Modal HTML -->
 
 </body>
 </html>
