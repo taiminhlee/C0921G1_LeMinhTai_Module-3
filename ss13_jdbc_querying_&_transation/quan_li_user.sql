@@ -102,3 +102,17 @@ end$$
 DELIMITER ;
 
 call edit(4,"Tai","taii@gmail.com","Viet Nam");
+
+delimiter $$
+create procedure `delete`(
+in id_user int
+)
+begin
+delete from users
+where id=id_user;
+end$$
+delimiter ;
+
+
+call `delete`();
+
