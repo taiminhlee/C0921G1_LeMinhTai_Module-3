@@ -1,60 +1,104 @@
 package bean;
 
 public class Contract {
-    private int contractId;
-    private String contractStartDate;
-    private String contractEndDate;
-    private double contractDeposit;
-    private double contractTotalMoney;
+    private int id;
+    private String startDate;
+    private String endDate;
+    private double deposit;
+    private double totalMoney;
+    private int employee;
+    private int customer;
+    private int service;
 
     public Contract() {
     }
 
-    public Contract(int contractId, String contractStartDate, String contractEndDate, double contractDeposit, double contractTotalMoney) {
-        this.contractId = contractId;
-        this.contractStartDate = contractStartDate;
-        this.contractEndDate = contractEndDate;
-        this.contractDeposit = contractDeposit;
-        this.contractTotalMoney = contractTotalMoney;
+    public Contract(int id, String startDate, String endDate, double deposit, double totalMoney, int employee, int customer, int service) {
+        this.id = id;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.deposit = deposit;
+        this.totalMoney = totalMoney;
+        this.employee = employee;
+        this.customer = customer;
+        this.service = service;
     }
 
-    public int getContractId() {
-        return contractId;
+    public int getId() {
+        return id;
     }
 
-    public void setContractId(int contractId) {
-        this.contractId = contractId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getContractStartDate() {
-        return contractStartDate;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setContractStartDate(String contractStartDate) {
-        this.contractStartDate = contractStartDate;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getContractEndDate() {
-        return contractEndDate;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setContractEndDate(String contractEndDate) {
-        this.contractEndDate = contractEndDate;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
-    public double getContractDeposit() {
-        return contractDeposit;
+    public double getDeposit() {
+        return deposit;
     }
 
-    public void setContractDeposit(double contractDeposit) {
-        this.contractDeposit = contractDeposit;
+    public void setDeposit(double deposit) {
+        this.deposit = deposit;
     }
 
-    public double getContractTotalMoney() {
-        return contractTotalMoney;
+    public double getTotalMoney() {
+        return totalMoney;
     }
 
-    public void setContractTotalMoney(double contractTotalMoney) {
-        this.contractTotalMoney = contractTotalMoney;
+    public void setTotalMoney(double totalMoney) {
+        this.totalMoney = totalMoney;
+    }
+
+    public int getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(int employee) {
+        this.employee = employee;
+    }
+
+    public int getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(int customer) {
+        this.customer = customer;
+    }
+
+    public int getService() {
+        return service;
+    }
+
+    public void setService(int service) {
+        this.service = service;
+    }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "id=" + id +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", deposit=" + deposit +
+                ", totalMoney=" + totalMoney +
+                ", employee=" + employee +
+                ", customer=" + customer +
+                ", service=" + service +
+                '}';
     }
 }

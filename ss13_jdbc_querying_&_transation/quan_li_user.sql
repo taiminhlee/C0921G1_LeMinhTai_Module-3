@@ -101,7 +101,7 @@ where id=id_user;
 end$$
 DELIMITER ;
 
-call edit(4,"Tai","taii@gmail.com","Viet Nam");
+call edit();
 
 delimiter $$
 create procedure `delete`(

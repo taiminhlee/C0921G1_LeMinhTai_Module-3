@@ -1,37 +1,38 @@
 package bean;
 
 public class Service {
-   private int service_id;
-   private String serviceName;
-   private int serviceArea;
-   private double serviceCost;
-   private int serviceMaxPeople;
-   private String standardRoom;
-   private String descriptionOtherConvenience;
-   private double poolArea;
-   private int numberOfFloors;
+    private String serviceId;
+    private String serviceName;
+    private int serviceArea;
+    private double serviceCost;
+    private int serviceMaxPeople;
+    private RentType rentType;
+    private ServiceType serviceType;
+    private String standardRoom;
+    private String descriptionOtherConvenience;
+    private double poolArea;
+    private int numberOfFloors;
 
-    public Service() {
-    }
-
-    public Service(int service_id, String serviceName, int serviceArea, double serviceCost, int serviceMaxPeople, String standardRoom, String descriptionOtherConvenience, double poolArea, int numberOfFloors) {
-        this.service_id = service_id;
+    public Service(String serviceId, String serviceName, int serviceArea, double serviceCost, int serviceMaxPeople, RentType rentType, ServiceType serviceType, String standardRoom, String descriptionOtherConvenience, double poolArea, int numberOfFloors) {
+        this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.serviceArea = serviceArea;
         this.serviceCost = serviceCost;
         this.serviceMaxPeople = serviceMaxPeople;
+        this.rentType = rentType;
+        this.serviceType = serviceType;
         this.standardRoom = standardRoom;
         this.descriptionOtherConvenience = descriptionOtherConvenience;
         this.poolArea = poolArea;
         this.numberOfFloors = numberOfFloors;
     }
 
-    public int getService_id() {
-        return service_id;
+    public String getServiceId() {
+        return serviceId;
     }
 
-    public void setService_id(int service_id) {
-        this.service_id = service_id;
+    public void setServiceId(String serviceId) {
+        this.serviceId = serviceId;
     }
 
     public String getServiceName() {
@@ -64,6 +65,22 @@ public class Service {
 
     public void setServiceMaxPeople(int serviceMaxPeople) {
         this.serviceMaxPeople = serviceMaxPeople;
+    }
+
+    public RentType getRentType() {
+        return rentType;
+    }
+
+    public void setRentType(RentType rentType) {
+        this.rentType = rentType;
+    }
+
+    public ServiceType getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(ServiceType serviceType) {
+        this.serviceType = serviceType;
     }
 
     public String getStandardRoom() {
